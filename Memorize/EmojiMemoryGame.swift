@@ -46,6 +46,10 @@ class EmojiMemoryGame: ObservableObject {
     return theme.color
   }
   
+  var score: Int {
+    return model.score
+  }
+  
   var title: String {
     return theme.name
   }

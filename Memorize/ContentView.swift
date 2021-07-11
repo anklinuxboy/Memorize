@@ -12,7 +12,7 @@ struct ContentView: View {
   
   var body: some View {
     VStack {
-      Text(viewModel.title)
+      Text("\(viewModel.title): \(viewModel.score)")
         .foregroundColor(viewModel.color)
         .font(.title)
       ScrollView {
