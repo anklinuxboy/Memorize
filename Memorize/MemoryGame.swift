@@ -10,10 +10,18 @@ import Foundation
 struct MemoryGame<CardContent> where CardContent: Equatable {
   private(set) var cards: Array<Card>
   private(set) var score: Int
-  private var indexOfOnlyCardShowing: Int?
+  
+  private var indexOfOnlyCardShowing: Int? {
+    get {
+      cards.indices.filter({cards[$0].isFaceUp}).oneAndOnly
+    }
+    set {
+      cards.indices.forEach { cards[$0].isFaceUp = ($0 == newValue) }
+    }
+  }
   
   init(numbersOfPairsOfCards: Int, createCardContent: (Int) -> CardContent) {
-    cards = Array<Card>()
+    cards = []
     // add numberOfPairs x 2 cards to array
     for pairIndex in 0..<numbersOfPairsOfCards {
       let content = createCardContent(pairIndex)
@@ -49,15 +57,10 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
           }
         }
         
-        indexOfOnlyCardShowing = nil
+        cards[index].isFaceUp.toggle()
       } else {
-        for i in cards.indices {
-          cards[i].isFaceUp = false
-        }
-        
         indexOfOnlyCardShowing = index
       }
-      cards[index].isFaceUp.toggle()
     }
   }
   
@@ -67,5 +70,15 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     var content: CardContent
     var isSeen = false
     var id: Int
+  }
+}
+
+extension Array {
+  var oneAndOnly: Element? {
+    if count == 1 {
+      return first
+    } else {
+      return nil
+    }
   }
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
+  typealias Card = MemoryGame<String>.Card
   
   private static let smileys = ["🤓", "😉", "😂", "😛", "🥳", "😃", "😀", "😄", "😆", "😅", "🤣", "🤕", "🥲", "☺️", "😇", "🙃", "😌", "😍", "😘", "🧐", "🤪", "😜", "🥸", "😡"]
   private static let vehicleEmojis = ["🚗", "🚙", "🏎", "🚕", "🚌", "🚎", "🚓", "🚑", "🚐", "🛻", "🚘", "🏍", "🚍", "🛴", "🛵", "🚛", "🚁", "✈️", "🚡", "🛺", "🚀", "🛶", "🛸", "🚢"]
@@ -38,7 +39,7 @@ class EmojiMemoryGame: ObservableObject {
     }
   }
   
-  var cards: Array<MemoryGame<String>.Card> {
+  var cards: Array<Card> {
     return model.cards
   }
   
@@ -55,7 +56,7 @@ class EmojiMemoryGame: ObservableObject {
   }
   
   //MARK: - Intent(s)
-  func choose(_ card: MemoryGame<String>.Card) {
+  func choose(_ card: Card) {
     model.choose(card)
   }
   
