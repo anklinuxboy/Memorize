@@ -17,7 +17,7 @@ class EmojiMemoryGame: ObservableObject {
   private static let foodEmojis = ["🍔", "🌭", "🌮", "🌯", "🥙", "🍕", "🍟", "🍖", "🍗", "🍱", "🍜", "🍿", "🍰", "🧁", "🍪"]
   private static let beveragesEmojis = ["🍺", "🍷", "🍸", "🍹", "🥂", "🍾", "🥃", "🍶", "☕️", "🍵", "🧉", "🥤", "🥛", "🧃", "🧋"]
   
-  private static let smileyTheme = GameTheme(name: "Smileys", content: smileys.shuffled(), numberOfPairs: 4, color: Color.yellow)
+  private static let smileyTheme = GameTheme(name: "Smileys", content: smileys.shuffled(), numberOfPairs: 12, color: Color.yellow)
   private let vehicleTheme = GameTheme(name: "Vehicles", content: vehicleEmojis, numberOfPairs: 6, color: Color.blue)
   private let flagTheme = GameTheme(name: "Flags", content: flagEmojis, numberOfPairs: 8, color: Color.red)
   private let activityTheme = GameTheme(name: "Sports", content: activityEmojis, numberOfPairs: 10, color: Color.orange)
